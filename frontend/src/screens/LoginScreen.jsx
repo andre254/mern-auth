@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLoginMutation } from "../slices/usersApiSlice"
 import { setCredentials} from '../slices/authSlice'
 import { toast } from "react-toastify"
+import Loader from "../components/Loader"
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -51,6 +52,8 @@ const LoginScreen = () => {
                 onChange={ (e) => setEmail(e.target.value)}
                 ></Form.Control>
             </Form.Group>
+
+            { isLoading && <Loader/> }
             <Form.Group className="my-2" controlId="email">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
